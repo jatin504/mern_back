@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 const UserRouter = require("./routes/userRouter");
-
+const PORT = process.env.PORT||3000
 
 const cors =  require("cors");
 app.use(cors());
@@ -15,9 +15,9 @@ mongoose
   .connect(process.env.URI)
   .then(() => {
     console.log("connected successfully");
-    app.listen(process.env.PORT || 8000, (err) => {
+    app.listen(PORT, (err) => {
       if (err) console.log(err);
-      console.log("Running Successfully at", process.env.PORT);
+      console.log("Running Successfully at", PORT);
     });
   })
   .catch((error) => {
